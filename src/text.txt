@@ -1,0 +1,88 @@
+running
+
+
+          <span class="las"><img src="./assets/user.png" alt=""></span>
+
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap'); 
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900;1000&display=swap');
+
+
+    /* font-family: 'Poppins', sans-serif; */
+    /* font-family: 'Open Sans', sans-serif; */
+
+          
+    /* font-family: 'Raleway', sans-serif; */
+    /* font-family: 'Manrope', sans-serif; */
+    /* font-family: 'Nunito', sans-serif; */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    login
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<template>
+    <form @submit.prevent="login">
+      <input type="text" v-model="phoneNumber" placeholder="Phone number" />
+      <input type="password" v-model="password" placeholder="Password" />
+      <button type="submit">Log in</button>
+    </form>
+  </template>
+  
+  // Login form script
+  <script>
+  export default {
+  name: 'Login-',
+    data() {
+      return {
+        phoneNumber: '',
+        password: '',
+      };
+    },
+    methods: {
+      async login() {
+        try {
+          const response = await this.$axios.post('http://192.168.29.11:5000/login', {
+            phoneNumber: this.phoneNumber,
+            password: this.password,
+          });
+        console.log(response)
+        //   const accessToken = response.data.accessToken;
+          // Store the access token in a secure way (e.g. in an HttpOnly cookie)
+          // Redirect the user to the protected page
+        } catch (error) {
+          // Handle login errors (e.g. display an error message)
+        }
+      },
+    },
+  };
+  </script>
